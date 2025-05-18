@@ -16,8 +16,8 @@ namespace Exerussus.EcsUI.Systems
             foreach (var entity in _destroyFilter)
             {
                 ref var destroyData = ref Pooler.DestroyProcess.Get(entity);
-                if (destroyData.ReadyToDestroy) World.DelEntity(entity);
-                else destroyData.ReadyToDestroy = true;
+                if (destroyData.ReadyToDestroy <= 0) World.DelEntity(entity);
+                else destroyData.ReadyToDestroy -= 1;
             }
         }
     }

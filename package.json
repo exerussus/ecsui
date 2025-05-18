@@ -1,6 +1,6 @@
 {
   "name": "com.exerussus.ecsui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "EcsUI",
   "description": "Архитектура для UI на Ecs-Lite.",
   "unity": "2020.3",

@@ -61,7 +61,8 @@ namespace Exerussus.EcsUI
 #endif
             if (World != null && PackedEntity.Unpack(World, out var entity))
             {
-                PoolerUI.DestroyProcess.AddOrGet(entity);
+                ref var destroyData = ref PoolerUI.DestroyProcess.AddOrGet(entity);
+                destroyData.ReadyToDestroy = 10;
             }
         }
 

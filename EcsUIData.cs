@@ -9,7 +9,7 @@ namespace Exerussus.EcsUI
     {
         public struct EntityUI                          : IEcsComponent { public EntityUIComponent Value; }
         public struct View                              : IEcsComponent { public RectTransform Value; }
-        public struct DestroyProcess                    : IEcsComponent { public bool ReadyToDestroy; }
+        public struct DestroyProcess                    : IEcsComponent { public short ReadyToDestroy; }
                   
         public struct StandardViewScale                 : IEcsComponent { public Vector3 Value; }
         public struct TargetViewScale                   : IEcsComponent { public Vector3 Value; public int LastTick; }
