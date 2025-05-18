@@ -1,0 +1,25 @@
+{
+  "name": "com.exerussus.ecsui",
+  "version": "1.0.0",
+  "displayName": "EcsUI",
+  "description": "Архитектура для UI на Ecs-Lite.",
+  "unity": "2020.3",
+  "dependencies": {},
+  "keywords": [
+    "leoecslite",
+    "leoecs",
+    "ecs",
+    "performance",
+    "1extensions",
+    "exerussus",
+    "ui"
+  ],
+  "author": {
+    "name": "Exerussus",
+    "email": "solovyov.production@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exerussus/ecsui.git"
+  }
+}
