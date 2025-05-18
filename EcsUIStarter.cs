@@ -4,7 +4,7 @@ using Exerussus._1Extensions.SignalSystem;
 using Exerussus._1Extensions.SmallFeatures;
 using Leopotam.EcsLite;
 
-namespace Plugins.Exerussus.EcsUI
+namespace Exerussus.EcsUI
 {
     public class EcsUIStarter : EcsStarter
     {

@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Plugins.Exerussus.EcsUI
+namespace Exerussus.EcsUI
 {
     [AddComponentMenu("ECS UI/EntityUI")]
     public class EntityUIComponent : MonoBehaviour

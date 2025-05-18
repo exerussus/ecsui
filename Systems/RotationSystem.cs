@@ -2,7 +2,7 @@
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace Plugins.Exerussus.EcsUI.Systems
+namespace Exerussus.EcsUI.Systems
 {
     public class RotationSystem : EasySystem<PoolerUI>
     {

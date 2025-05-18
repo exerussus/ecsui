@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Exerussus._1EasyEcs.Scripts.Core;
 using UnityEngine;
 
-namespace Plugins.Exerussus.EcsUI
+namespace Exerussus.EcsUI
 {
     public static class EcsUIData
     {

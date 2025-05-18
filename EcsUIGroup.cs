@@ -1,8 +1,8 @@
 ﻿using Exerussus._1EasyEcs.Scripts.Custom;
+using Exerussus.EcsUI.Systems;
 using Leopotam.EcsLite;
-using Plugins.Exerussus.EcsUI.Systems;
 
-namespace Plugins.Exerussus.EcsUI
+namespace Exerussus.EcsUI
 {
     public class EcsUIGroup : EcsGroup<PoolerUI>
     {

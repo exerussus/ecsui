@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Plugins.Exerussus.EcsUI.Components
+namespace Exerussus.EcsUI.Components
 {
     [AddComponentMenu("ECS UI/Draggable")]
     [RequireComponent(typeof(EntityUIComponent))]

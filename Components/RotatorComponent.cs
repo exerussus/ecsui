@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Plugins.Exerussus.EcsUI.Components
+namespace Exerussus.EcsUI.Components
 {
     [AddComponentMenu("ECS UI/Rotator")]
     [RequireComponent(typeof(EntityUIComponent))]

@@ -1,7 +1,7 @@
 ﻿using Exerussus._1EasyEcs.Scripts.Core;
 using Leopotam.EcsLite;
 
-namespace Plugins.Exerussus.EcsUI.Systems
+namespace Exerussus.EcsUI.Systems
 {
     public class DestroySystem : EasySystem<PoolerUI>
     {

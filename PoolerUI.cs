@@ -5,7 +5,7 @@ using Exerussus._1EasyEcs.Scripts.Custom;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace Plugins.Exerussus.EcsUI
+namespace Exerussus.EcsUI
 {
     public class PoolerUI : IGroupPooler
     {

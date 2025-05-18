@@ -1,4 +1,4 @@
-﻿namespace Plugins.Exerussus.EcsUI
+﻿namespace Exerussus.EcsUI
 {
     public enum ProcessCallbackType
     {
