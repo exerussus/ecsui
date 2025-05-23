@@ -1,4 +1,7 @@
 ﻿using System;
+using LitMotion;
+using LitMotion.Adapters;
+using LitMotion.Extensions;
 using UnityEngine;
 
 namespace Exerussus.EcsUI

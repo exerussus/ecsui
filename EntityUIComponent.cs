@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Exerussus._1EasyEcs.Scripts.Extensions;
 using Leopotam.EcsLite;
+using LitMotion;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Exerussus.EcsUI
 {
@@ -13,7 +13,7 @@ namespace Exerussus.EcsUI
         public EcsPackedEntity PackedEntity;
         public EcsWorld World;
         public PoolerUI PoolerUI;
-        [FormerlySerializedAs("isEffectActive")] [FoldoutGroup("ECS UI")] public bool isPointActive = true;
+        [FoldoutGroup("ECS UI")] public bool isPointActive = true;
         [FoldoutGroup("ECS UI")] public RectTransform viewRectTransform;
         [FoldoutGroup("ECS UI")] public List<string> tags = new();
 
@@ -63,6 +63,14 @@ namespace Exerussus.EcsUI
             {
                 ref var destroyData = ref PoolerUI.DestroyProcess.AddOrGet(entity);
                 destroyData.ReadyToDestroy = 10;
+                if (PoolerUI.LitMotionHandle.Has(entity))
+                {
+                    ref var handlerData = ref PoolerUI.LitMotionHandle.Get(entity);
+                    foreach (var handle in handlerData.Value)
+                    {
+                        if (handle.IsActive()) handle.Complete();
+                    }
+                }
             }
         }
 
@@ -70,5 +78,6 @@ namespace Exerussus.EcsUI
         public static implicit operator int(EntityUIComponent entityUI) => entityUI.PackedEntity.Id;
         public static implicit operator PoolerUI(EntityUIComponent entityUI) => entityUI.PoolerUI;
         public static implicit operator EcsWorld(EntityUIComponent entityUI) => entityUI.World;
+        public static implicit operator Transform(EntityUIComponent entityUI) => entityUI.transform;
     }
 }

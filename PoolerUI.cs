@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Exerussus._1EasyEcs.Scripts.Core;
 using Exerussus._1EasyEcs.Scripts.Custom;
 using Leopotam.EcsLite;
+using LitMotion;
+using LitMotion.Adapters;
 using UnityEngine;
 
 namespace Exerussus.EcsUI
@@ -15,6 +17,12 @@ namespace Exerussus.EcsUI
             View = new(world);
             Tags = new(world);
             DestroyProcess = new(world);
+            LitMotionBuilder = new(world);
+            LitMotionHandle = new(world, (entity, pool) =>
+            {
+                ref var data = ref pool.Get(entity);
+                data.Value = new();
+            });
             
             StandardViewRotation = new(world);
             TargetViewRotation = new(world);
@@ -71,6 +79,8 @@ namespace Exerussus.EcsUI
         public PoolerModule<EcsUIData.RotationPostProcessCallback> RotationPostProcessCallback { get; private set; }
         
         public PoolerModule<EcsUIData.Tags> Tags { get; private set; }
+        public PoolerModule<EcsUIData.LitMotionBuilder> LitMotionBuilder { get; private set; }
+        public PoolerModuleCustom<EcsUIData.LitMotionHandle> LitMotionHandle { get; private set; }
 
         private EcsFilter _tagFilter;
         private EcsFilter _moveTagFilter;
@@ -545,6 +555,11 @@ namespace Exerussus.EcsUI
             timeData.Value = time;
             timeData.TimeRemaining = time;
         }
+
+        public void LitScaleToTemp(int entity)
+        {
+            
+        }
         
         public void ScaleToTemp(int entity, Vector3 scale, float time, ProcessCallbackType callbackType, Action callback)
         {
@@ -683,4 +698,13 @@ namespace Exerussus.EcsUI
             }
         }
     }
+
+    public struct EntityOption : IMotionOptions, IEquatable<EntityOption>
+    {
+        public EcsPackedEntity PackedEntity;
+        public bool Equals(EntityOption other)
+        {
+            return true;
+        }
+    } 
 }

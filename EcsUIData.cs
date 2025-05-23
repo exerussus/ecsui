@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Exerussus._1EasyEcs.Scripts.Core;
+using LitMotion;
+using LitMotion.Adapters;
 using UnityEngine;
 
 namespace Exerussus.EcsUI
@@ -43,5 +45,7 @@ namespace Exerussus.EcsUI
         public struct RotationPostProcessCallback       : IEcsComponent { public List<Action> Value;  }
         
         public struct Tags                              : IEcsComponent { public HashSet<string> Value;  }
+        public struct LitMotionBuilder                  : IEcsComponent { public MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> Value;  }
+        public struct LitMotionHandle                   : IEcsComponent { public List<MotionHandle> Value;  }
     }
 }
