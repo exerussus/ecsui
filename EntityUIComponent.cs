@@ -13,6 +13,8 @@ namespace Exerussus.EcsUI
         public EcsPackedEntity PackedEntity;
         public EcsWorld World;
         public PoolerUI PoolerUI;
+        public bool IsRotationActive = true;
+        public bool IsScaleActive = true;
         [FoldoutGroup("ECS UI")] public bool isPointActive = true;
         [FoldoutGroup("ECS UI")] public RectTransform viewRectTransform;
         [FoldoutGroup("ECS UI")] public List<string> tags = new();

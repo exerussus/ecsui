@@ -23,7 +23,10 @@ namespace Exerussus.EcsUI.Systems
             ref var timeData = ref Pooler.ScaleTime.Get(entity);
             ref var targetData = ref Pooler.TargetViewScale.Get(entity);
             ref var viewData = ref Pooler.View.Get(entity);
-
+            ref var entityUiData = ref Pooler.EntityUI.Get(entity);
+            
+            if (!entityUiData.Value.IsScaleActive) return; 
+            
             if (viewData.Value == null || timeData.TimeRemaining <= 0f) return;
 
             var rectTransform = viewData.Value;
