@@ -20,8 +20,15 @@ namespace Exerussus.EcsUI.Systems
 
         private void OnDraggableUpdate(int entity)
         {
-            ref var viewData = ref Pooler.View.Get(entity);
-            var rectTransform = viewData.Value;
+            ref var entityUiData = ref Pooler.EntityUI.Get(entity);
+            
+            if (!entityUiData.Value.IsDragActive)
+            {
+                Pooler.DraggableProcessMark.Del(entity);
+                return;
+            }
+            
+            var rectTransform = entityUiData.Value.viewRectTransform;
             
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 rectTransform.parent as RectTransform,

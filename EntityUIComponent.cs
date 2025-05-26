@@ -15,6 +15,7 @@ namespace Exerussus.EcsUI
         public PoolerUI PoolerUI;
         public bool IsRotationActive = true;
         public bool IsScaleActive = true;
+        public bool IsDragActive = true;
         [FoldoutGroup("ECS UI")] public bool isPointActive = true;
         [FoldoutGroup("ECS UI")] public RectTransform viewRectTransform;
         [FoldoutGroup("ECS UI")] public List<string> tags = new();
