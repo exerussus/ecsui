@@ -19,20 +19,30 @@ namespace Exerussus.EcsUI.Components
             _entityUI = GetComponent<EntityUIComponent>();
         }
 
+        public void ForceScaleUp()
+        {
+            if (_entityUI == null) return;
+            _entityUI.ScaleToTemp(highlight.scale, highlight.time);
+        }
+
+        public void ForceScaleDown()
+        {
+            if (_entityUI == null) return;
+            _entityUI.ScaleToStandard(highlight.backTime);
+        }
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!highlight.enabled) return;
-            if (_entityUI == null) return;
             if (!_entityUI.isPointActive) return;
-            _entityUI.ScaleToTemp(highlight.scale, highlight.time);
+            ForceScaleUp();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             if (!highlight.enabled) return;
-            if (_entityUI == null) return;
             if (!_entityUI.isPointActive) return;
-            _entityUI.ScaleToStandard(highlight.backTime);
+            ForceScaleDown();
         }
 
         public void OnPointerClick(PointerEventData eventData)
