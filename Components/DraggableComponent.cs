@@ -18,14 +18,14 @@ namespace Exerussus.EcsUI.Components
         {
             if (_entityUI == null) return;
             if (!_entityUI.isPointActive) return;
-            _entityUI.PoolerUI.DraggableProcessMark.AddOrGet(_entityUI);
+            _entityUI.PoolerUI.DraggableProcessMark.AddOrGet(_entityUI.EcsEntityUI);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             if (_entityUI == null) return;
             if (!_entityUI.isPointActive) return;
-            _entityUI.PoolerUI.DraggableProcessMark.Del(_entityUI);
+            _entityUI.PoolerUI.DraggableProcessMark.Del(_entityUI.EcsEntityUI);
         }
     }
 }

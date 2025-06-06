@@ -9,7 +9,7 @@ namespace Exerussus.EcsUI
     {
         public static MotionHandle BindEntityToPosition(this MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, EntityUIComponent entityUI)
         {
-            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI);
+            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI.EcsEntityUI);
             var motionHandle = motionBuilder.BindToPosition(entityUI);
             litMotionHandle.Value.Add(motionHandle);
             return motionHandle;
@@ -17,7 +17,7 @@ namespace Exerussus.EcsUI
         
         public static MotionHandle BindEntityToLocalPosition(this MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, EntityUIComponent entityUI)
         {
-            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI);
+            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI.EcsEntityUI);
             var motionHandle = motionBuilder.BindToLocalPosition(entityUI);
             litMotionHandle.Value.Add(motionHandle);
             return motionHandle;
@@ -25,7 +25,7 @@ namespace Exerussus.EcsUI
         
         public static MotionHandle BindEntityToLocalScale(this MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, EntityUIComponent entityUI)
         {
-            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI);
+            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI.EcsEntityUI);
             var motionHandle = motionBuilder.BindToLocalScale(entityUI);
             litMotionHandle.Value.Add(motionHandle);
             return motionHandle;
@@ -33,7 +33,7 @@ namespace Exerussus.EcsUI
         
         public static MotionHandle BindEntityToLocalEulerAngles(this MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, EntityUIComponent entityUI)
         {
-            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI);
+            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI.EcsEntityUI);
             var motionHandle = motionBuilder.BindToLocalEulerAngles(entityUI);
             litMotionHandle.Value.Add(motionHandle);
             return motionHandle;
@@ -41,7 +41,7 @@ namespace Exerussus.EcsUI
         
         public static MotionHandle BindEntityToEulerAngles(this MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, EntityUIComponent entityUI)
         {
-            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI);
+            ref var litMotionHandle = ref entityUI.PoolerUI.LitMotionHandle.AddOrGet(entityUI.EcsEntityUI);
             var motionHandle = motionBuilder.BindToEulerAngles(entityUI);
             litMotionHandle.Value.Add(motionHandle);
             return motionHandle;

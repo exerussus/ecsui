@@ -10,8 +10,7 @@ namespace Exerussus.EcsUI
     [AddComponentMenu("ECS UI/EntityUI")]
     public class EntityUIComponent : MonoBehaviour
     {
-        public EcsPackedEntity PackedEntity;
-        public EcsWorld World;
+        public EcsPackedEntity PackedEntityUI;
         public PoolerUI PoolerUI;
         public bool IsRotationActive = true;
         public bool IsScaleActive = true;
@@ -19,19 +18,21 @@ namespace Exerussus.EcsUI
         [FoldoutGroup("ECS UI")] public bool isPointActive = true;
         [FoldoutGroup("ECS UI")] public RectTransform viewRectTransform;
         [FoldoutGroup("ECS UI")] public List<string> tags = new();
+        public EcsWorld WorldUI => PoolerUI.World;
+        public int EcsEntityUI => PackedEntityUI.Id;
 
         [Button, FoldoutGroup("Debug")]
         public void AddTag(string tagName)
         {
             tags.Add(tagName);
-            if (World != null &&PackedEntity.Unpack(World, out var entity)) PoolerUI.UpdateTags(entity);
+            if (WorldUI != null &&PackedEntityUI.Unpack(WorldUI, out var entity)) PoolerUI.UpdateTags(entity);
         }
         
         [Button, FoldoutGroup("Debug")]
         public void RemoveTag(string tagName)
         {
             tags.Remove(tagName);
-            if (World != null &&PackedEntity.Unpack(World, out var entity)) PoolerUI.UpdateTags(entity);
+            if (WorldUI != null &&PackedEntityUI.Unpack(WorldUI, out var entity)) PoolerUI.UpdateTags(entity);
         }
         
         protected virtual void OnEnable()
@@ -41,28 +42,31 @@ namespace Exerussus.EcsUI
 #endif
 
             PoolerUI = EcsUIStarter.PoolerUI;
-            World = PoolerUI.World;
-            PackedEntity = World.NewPackedEntity();
+            PackedEntityUI = WorldUI.NewPackedEntity();
             
-            ref var entityUIData = ref PoolerUI.EntityUI.Add(this);
+            Debug.Log($"entity UI | Init : {PackedEntityUI.Id}.");
+            
+            ref var entityUIData = ref PoolerUI.EntityUI.Add(EcsEntityUI);
             entityUIData.Value = this;
-            ref var viewData = ref PoolerUI.View.Add(this);
+            entityUIData.PackedEntity = PackedEntityUI;
+            ref var viewData = ref PoolerUI.View.Add(EcsEntityUI);
             viewData.Value = viewRectTransform;
-            ref var positionData = ref PoolerUI.StandardViewPosition.Add(this);
+            ref var positionData = ref PoolerUI.StandardViewPosition.Add(EcsEntityUI);
             positionData.Value = viewRectTransform.localPosition;
-            ref var rotationData = ref PoolerUI.StandardViewRotation.Add(this);
+            ref var rotationData = ref PoolerUI.StandardViewRotation.Add(EcsEntityUI);
             rotationData.Value = transform.rotation.eulerAngles;
-            ref var scaleData = ref PoolerUI.StandardViewScale.Add(this);
+            ref var scaleData = ref PoolerUI.StandardViewScale.Add(EcsEntityUI);
             scaleData.Value = transform.localScale;
-            if (tags.Count > 0) PoolerUI.UpdateTags(this);
+            if (tags.Count > 0) PoolerUI.UpdateTags(EcsEntityUI);
         }
 
         protected virtual void OnDisable()
         {
+            Debug.Log($"entity UI | Deinitialize : {PackedEntityUI.Id}.");
 #if UNITY_EDITOR
             if (!Application.isPlaying) return;
 #endif
-            if (World != null && PackedEntity.Unpack(World, out var entity))
+            if (WorldUI != null && PackedEntityUI.Unpack(WorldUI, out var entity))
             {
                 ref var destroyData = ref PoolerUI.DestroyProcess.AddOrGet(entity);
                 destroyData.ReadyToDestroy = 10;
@@ -77,10 +81,7 @@ namespace Exerussus.EcsUI
             }
         }
 
-        public static implicit operator EcsPackedEntity(EntityUIComponent entityUI) => entityUI.PackedEntity;
-        public static implicit operator int(EntityUIComponent entityUI) => entityUI.PackedEntity.Id;
-        public static implicit operator PoolerUI(EntityUIComponent entityUI) => entityUI.PoolerUI;
-        public static implicit operator EcsWorld(EntityUIComponent entityUI) => entityUI.World;
+        public static implicit operator EcsPackedEntity(EntityUIComponent entityUI) => entityUI.PackedEntityUI;
         public static implicit operator Transform(EntityUIComponent entityUI) => entityUI.transform;
     }
 }

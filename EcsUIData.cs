@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Exerussus._1EasyEcs.Scripts.Core;
+using Leopotam.EcsLite;
 using LitMotion;
 using LitMotion.Adapters;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Exerussus.EcsUI
 {
     public static class EcsUIData
     {
-        public struct EntityUI                          : IEcsComponent { public EntityUIComponent Value; }
+        public struct EntityUI                          : IEcsComponent { public EntityUIComponent Value; public EcsPackedEntity PackedEntity; }
         public struct View                              : IEcsComponent { public RectTransform Value; }
         public struct DestroyProcess                    : IEcsComponent { public byte ReadyToDestroy; }
                   
