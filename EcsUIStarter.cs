@@ -40,6 +40,6 @@ namespace Exerussus.EcsUI
             
         }
         
-        protected override EcsGroup[] GetGroups() => new EcsGroup[] { new EcsUIGroup() };
+        protected override EcsGroup[] CreateGroups() => new EcsGroup[] { new EcsUIGroup() };
     }
 }
